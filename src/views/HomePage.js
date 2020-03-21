@@ -1,87 +1,75 @@
 import React from 'react'
 
+import { useHistory } from 'react-router-dom'
+
 import Typography from '@material-ui/core/Typography'
+import ButtonBase from '@material-ui/core/ButtonBase'
+import Paper from '@material-ui/core/Paper'
 import { makeStyles } from '@material-ui/core/styles'
+import Fade from '@material-ui/core/Fade'
 
 const useStyles = makeStyles(theme => ({
 	content: {
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center',
 		flexGrow: 1,
 		padding: theme.spacing(3),
 		paddingBottom: 100,
 	},
+	accountBtn: {
+		width: '100%',
+		padding: 50,
+		border: '0.5px solid',
+	},
+	accountBtnWrapper: {
+		display: 'flex',
+		width: '70%',
+		justifyContent: 'center',
+		padding: 10,
+	},
 }))
 
-const Home = () => {
+const Home = props => {
 	const classes = useStyles()
+	const history = useHistory()
+
+	const handleClick = to => {
+		history.push(to)
+	}
+
 	return (
-		<main className={classes.content}>
-			<Typography paragraph>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-				dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum facilisis leo vel. Risus at
-				ultrices mi tempus imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus. Convallis
-				convallis tellus id interdum velit laoreet id donec ultrices. Odio morbi quis commodo odio aenean sed
-				adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies integer quis. Cursus euismod quis
-				viverra nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo
-				quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue eget arcu
-				dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien
-				faucibus et molestie ac.
-			</Typography>
-			<Typography paragraph>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-				dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum facilisis leo vel. Risus at
-				ultrices mi tempus imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus. Convallis
-				convallis tellus id interdum velit laoreet id donec ultrices. Odio morbi quis commodo odio aenean sed
-				adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies integer quis. Cursus euismod quis
-				viverra nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo
-				quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue eget arcu
-				dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien
-				faucibus et molestie ac.
-			</Typography>
-			<Typography paragraph>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-				dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum facilisis leo vel. Risus at
-				ultrices mi tempus imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus. Convallis
-				convallis tellus id interdum velit laoreet id donec ultrices. Odio morbi quis commodo odio aenean sed
-				adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies integer quis. Cursus euismod quis
-				viverra nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo
-				quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue eget arcu
-				dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien
-				faucibus et molestie ac.
-			</Typography>
-			<Typography paragraph>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-				dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum facilisis leo vel. Risus at
-				ultrices mi tempus imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus. Convallis
-				convallis tellus id interdum velit laoreet id donec ultrices. Odio morbi quis commodo odio aenean sed
-				adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies integer quis. Cursus euismod quis
-				viverra nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo
-				quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue eget arcu
-				dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien
-				faucibus et molestie ac.
-			</Typography>
-			<Typography paragraph>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-				dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum facilisis leo vel. Risus at
-				ultrices mi tempus imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus. Convallis
-				convallis tellus id interdum velit laoreet id donec ultrices. Odio morbi quis commodo odio aenean sed
-				adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies integer quis. Cursus euismod quis
-				viverra nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo
-				quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue eget arcu
-				dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien
-				faucibus et molestie ac.
-			</Typography>
-			<Typography paragraph>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-				dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum facilisis leo vel. Risus at
-				ultrices mi tempus imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus. Convallis
-				convallis tellus id interdum velit laoreet id donec ultrices. Odio morbi quis commodo odio aenean sed
-				adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies integer quis. Cursus euismod quis
-				viverra nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo
-				quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue eget arcu
-				dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien
-				faucibus et molestie ac.
-			</Typography>
-		</main>
+		<Fade in>
+			<main className={classes.content}>
+				<div className={classes.accountBtnWrapper}>
+					<ButtonBase
+						onClick={() => handleClick('/account/register')}
+						component={Paper}
+						className={classes.accountBtn}
+					>
+						<Typography variant="body2">Register a new account</Typography>
+					</ButtonBase>
+				</div>
+				<div className={classes.accountBtnWrapper}>
+					<ButtonBase
+						onClick={() => handleClick('/account/login')}
+						component={Paper}
+						className={classes.accountBtn}
+					>
+						<Typography variant="body2">Login</Typography>
+					</ButtonBase>
+				</div>
+				<div className={classes.accountBtnWrapper}>
+					<ButtonBase
+						onClick={() => handleClick('/account/forgotpass')}
+						component={Paper}
+						className={classes.accountBtn}
+					>
+						<Typography variant="body2">Forgot Password</Typography>
+					</ButtonBase>
+				</div>
+			</main>
+		</Fade>
 	)
 }
 

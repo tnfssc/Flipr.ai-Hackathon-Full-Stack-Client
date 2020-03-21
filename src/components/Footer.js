@@ -32,6 +32,9 @@ const useStyles = makeStyles(theme => ({
 		color: 'white',
 		textDecoration: 'none',
 	},
+	footerBar: {
+		backgroundColor: '#1976D2',
+	},
 }))
 
 const HideOnScroll = props => {
@@ -59,7 +62,7 @@ const Footer = props => {
 		<HideOnScroll>
 			<div className={classes.footer}>
 				<ScrollToBottom where="#down-at-bottom-anchor">
-					<Toolbar variant="dense">
+					<Toolbar className={classes.footerBar} variant="dense">
 						<Typography className={classes.leftText}></Typography>
 						<Typography className={classes.rightText}>
 							<a className={classes.footerLink} href="https://github.com/tnfssc">

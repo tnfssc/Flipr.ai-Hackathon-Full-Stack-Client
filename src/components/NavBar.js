@@ -34,6 +34,9 @@ const useStyles = makeStyles(theme => ({
 			display: 'none',
 		},
 	},
+	NavBar: {
+		backgroundColor: '#1976D2',
+	},
 	drawerPaper: {
 		width: drawerWidth,
 	},
@@ -60,7 +63,7 @@ const NavBar = props => {
 		<>
 			<HideOnScroll>
 				<AppBar position="fixed" className={classes.appBar}>
-					<Toolbar>
+					<Toolbar className={classes.NavBar}>
 						<IconButton
 							color="inherit"
 							aria-label="open drawer"
@@ -71,7 +74,7 @@ const NavBar = props => {
 							<MenuIcon />
 						</IconButton>
 						<Typography variant="h6" noWrap>
-							Responsive drawer
+							Krello
 						</Typography>
 					</Toolbar>
 				</AppBar>
