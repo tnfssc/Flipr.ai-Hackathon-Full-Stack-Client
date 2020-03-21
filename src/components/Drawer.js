@@ -8,8 +8,9 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import HomeIcon from '@material-ui/icons/Home'
-import CreateIcon from '@material-ui/icons/Create'
 import { makeStyles } from '@material-ui/core/styles'
+import PersonIcon from '@material-ui/icons/Person'
+import GroupIcon from '@material-ui/icons/Group'
 
 const useStyles = makeStyles(theme => ({
 	toolbar: theme.mixins.toolbar,
@@ -22,9 +23,14 @@ const drawerContents = [
 		icon: HomeIcon,
 	},
 	{
-		name: 'Item 1',
-		to: '/Item1',
-		icon: CreateIcon,
+		name: 'Personal Boards',
+		to: '/boards/personal',
+		icon: PersonIcon,
+	},
+	{
+		name: 'Team Boards',
+		to: '/boards/team',
+		icon: GroupIcon,
 	},
 ]
 

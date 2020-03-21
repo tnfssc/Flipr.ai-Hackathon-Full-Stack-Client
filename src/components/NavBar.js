@@ -1,6 +1,14 @@
 import React, { useState } from 'react'
 
+import axios from 'axios'
+
+import { read_cookie } from 'sfcookies'
+
+import { useHistory } from 'react-router-dom'
+
 import SideDrawer from './Drawer'
+
+import { logoutAddress } from '../constants'
 
 import AppBar from '@material-ui/core/AppBar'
 import IconButton from '@material-ui/core/IconButton'
@@ -13,6 +21,7 @@ import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import useScrollTrigger from '@material-ui/core/useScrollTrigger'
 import Slide from '@material-ui/core/Slide'
+import Button from '@material-ui/core/Button'
 
 const drawerWidth = 240
 const useStyles = makeStyles(theme => ({
@@ -53,12 +62,20 @@ const HideOnScroll = props => {
 
 const NavBar = props => {
 	const classes = useStyles()
-
+	const history = useHistory()
 	const [drawerOpen, setDrawerOpen] = useState(false)
 
 	const handleDrawerToggle = open => {
 		setDrawerOpen(open)
 	}
+
+	const handleLogout = async () => {
+		const res = await axios.post(logoutAddress, read_cookie('loginCredentials'))
+		props.newSnack(res.data)
+		props.setLoggedIn(false)
+		history.push('/')
+	}
+
 	return (
 		<>
 			<HideOnScroll>
@@ -76,6 +93,14 @@ const NavBar = props => {
 						<Typography variant="h6" noWrap>
 							Krello
 						</Typography>
+						<Typography style={{ flexGrow: 1 }}></Typography>
+						{props.loggedIn ? (
+							<Button onClick={handleLogout} style={{ color: 'white' }}>
+								Logout
+							</Button>
+						) : (
+							<></>
+						)}
 					</Toolbar>
 				</AppBar>
 			</HideOnScroll>

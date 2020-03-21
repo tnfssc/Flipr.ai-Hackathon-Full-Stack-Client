@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 
 import axios from 'axios'
 
+import { bake_cookie } from 'sfcookies'
+
 import { useHistory } from 'react-router-dom'
 
 import { loginAddress } from '../constants'
@@ -41,6 +43,7 @@ const useStyles = makeStyles(theme => ({
 
 const LoginPage = props => {
 	const classes = useStyles()
+	// eslint-disable-next-line
 	const history = useHistory()
 
 	const [formData, setFormData] = useState({})
@@ -72,10 +75,11 @@ const LoginPage = props => {
 				.post(loginAddress, formData)
 				.then(response => response.data)
 				.catch(error => error)
-			console.log(res)
 			if (res.token) {
 				props.newSnack('Login Successful')
-				console.log(res.token)
+				bake_cookie('loginCredentials', res)
+				history.push('/boards/personal')
+				props.setLoggedIn(true)
 			} else setErrorMsg(res)
 		}
 	}

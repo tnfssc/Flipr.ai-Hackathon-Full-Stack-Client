@@ -1,12 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, useHistory } from 'react-router-dom'
+import axios from 'axios'
+import { read_cookie } from 'sfcookies'
+
+import { checkToken } from './constants'
 
 import Home from './views/HomePage'
 import Error404Page from './views/404ErrorPage'
 import RegisterPage from './views/RegisterPage'
 import LoginPage from './views/LoginPage'
 import ForgotPassPage from './views/ForgotPassPage'
+import PersonalBoard from './views/Boards/Personal/main'
 
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
@@ -65,14 +70,41 @@ const allPages = [
 		path: '/account/forgotpass',
 		exact: true,
 	},
+	{
+		view: PersonalBoard,
+		path: '/boards/personal',
+		exact: false,
+	},
 ]
 
 const App = () => {
 	const classes = useStyles()
+	const history = useHistory()
 
 	const [snackOpen, setSnackOpen] = useState(false)
 	const [snackMessage, setSnackMessage] = useState('Test')
 	const [snackClickawayCount, setSnackClickawayCount] = useState(0)
+	const [loggedIn, setLoggedIn] = useState(false)
+
+	const validateToken = async () => {
+		const credentials = read_cookie('loginCredentials')
+		const res = await axios.post(checkToken, credentials).catch(error => error)
+		if (res.data === 'Session Valid') return true
+		else return false
+	}
+
+	useEffect(() => {
+		validateToken().then(valid => {
+			if (valid) {
+				setLoggedIn(true)
+				history.push('/boards/personal')
+			} else {
+				setLoggedIn(false)
+				history.push('/')
+			}
+		})
+		// eslint-disable-next-line
+	}, [loggedIn])
 
 	const snackFunc = {
 		newSnack: message => {
@@ -93,7 +125,7 @@ const App = () => {
 		<div className={classes.root}>
 			<CssBaseline />
 			<Snacks open={snackOpen} text={snackMessage} handleClose={snackFunc.snacksClose} />
-			<NavBar />
+			<NavBar newSnack={snackFunc.newSnack} loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
 			<div className={classes.main}>
 				<div id="back-to-top-anchor" />
 				<div className={classes.toolbar} />
@@ -101,7 +133,11 @@ const App = () => {
 					{allPages.map((Page, key) => {
 						return (
 							<Route key={key} path={Page.path} exact>
-								<Page.view newSnack={snackFunc.newSnack} />
+								<Page.view
+									loggedIn={loggedIn}
+									setLoggedIn={setLoggedIn}
+									newSnack={snackFunc.newSnack}
+								/>
 							</Route>
 						)
 					})}
