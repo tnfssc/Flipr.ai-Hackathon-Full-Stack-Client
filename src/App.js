@@ -22,6 +22,9 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import { makeStyles } from '@material-ui/core/styles'
 import Fab from '@material-ui/core/Fab'
 
+import Backdrop from '@material-ui/core/Backdrop'
+import CircularProgress from '@material-ui/core/CircularProgress'
+
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
 
 const drawerWidth = 240
@@ -85,10 +88,14 @@ const App = () => {
 	const [snackMessage, setSnackMessage] = useState('Test')
 	const [snackClickawayCount, setSnackClickawayCount] = useState(0)
 	const [loggedIn, setLoggedIn] = useState(false)
+	const [loading, setLoading] = useState(false)
 
 	const validateToken = async () => {
 		const credentials = read_cookie('loginCredentials')
+		if (credentials === undefined) return false
+		setLoading(true)
 		const res = await axios.post(checkToken, credentials).catch(error => error)
+		setLoading(false)
 		if (res.data === 'Session Valid') return true
 		else return false
 	}
@@ -126,13 +133,16 @@ const App = () => {
 			<CssBaseline />
 			<Snacks open={snackOpen} text={snackMessage} handleClose={snackFunc.snacksClose} />
 			<NavBar newSnack={snackFunc.newSnack} loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+			<Backdrop style={{ color: 'black', zIndex: 2000 }} open={loading}>
+				<CircularProgress style={{ color: 'white' }} />
+			</Backdrop>
 			<div className={classes.main}>
 				<div id="back-to-top-anchor" />
 				<div className={classes.toolbar} />
 				<Switch>
 					{allPages.map((Page, key) => {
 						return (
-							<Route key={key} path={Page.path} exact>
+							<Route key={key} path={Page.path} exact={Page.exact}>
 								<Page.view
 									loggedIn={loggedIn}
 									setLoggedIn={setLoggedIn}

@@ -1,7 +1,11 @@
-//export const serverAddress = 'http://localhost:4000/'
-export const serverAddress = 'https://abctnfssc.herokuapp.com/'
+export const serverAddress = 'http://localhost:4000/'
+//export const serverAddress = 'https://abctnfssc.herokuapp.com/'
 export const registerAddress = serverAddress + 'register'
 export const loginAddress = serverAddress + 'login'
 export const forgotpassAddress = serverAddress + 'forgotpassword'
 export const checkToken = serverAddress + 'loginwithtoken'
 export const logoutAddress = serverAddress + 'logout'
+
+export const getPersonalBoards = serverAddress + 'personalboards'
+export const getLists = serverAddress + 'lists'
+export const getCards = serverAddress + 'cards'

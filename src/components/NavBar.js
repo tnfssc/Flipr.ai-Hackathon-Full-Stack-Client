@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 import axios from 'axios'
 
-import { read_cookie } from 'sfcookies'
+import { read_cookie, delete_cookie } from 'sfcookies'
 
 import { useHistory } from 'react-router-dom'
 
@@ -71,7 +71,10 @@ const NavBar = props => {
 
 	const handleLogout = async () => {
 		const res = await axios.post(logoutAddress, read_cookie('loginCredentials'))
-		props.newSnack(res.data)
+		delete_cookie('loginCredentials')
+		setTimeout(() => {
+			props.newSnack(res.data)
+		}, 1000)
 		props.setLoggedIn(false)
 		history.push('/')
 	}
