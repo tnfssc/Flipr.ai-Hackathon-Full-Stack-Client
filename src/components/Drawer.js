@@ -29,7 +29,7 @@ const drawerContents = [
 	},
 	{
 		name: 'Team Boards',
-		to: '/boards/team',
+		to: '/boards/teams',
 		icon: GroupIcon,
 	},
 ]

@@ -10,3 +10,6 @@ export const logoutAddress = serverAddress + 'logout'
 export const getPersonalBoards = serverAddress + 'personalboards'
 export const getLists = serverAddress + 'lists'
 export const getCards = serverAddress + 'cards'
+
+export const getTeams = serverAddress + 'teams'
+export const createTeamAddress = serverAddress + 'createteam'

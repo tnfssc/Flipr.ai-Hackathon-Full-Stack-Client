@@ -12,6 +12,7 @@ import RegisterPage from './views/RegisterPage'
 import LoginPage from './views/LoginPage'
 import ForgotPassPage from './views/ForgotPassPage'
 import PersonalBoard from './views/Boards/Personal/main'
+import TeamsPage from './views/Boards/Team/teams'
 
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
@@ -78,6 +79,11 @@ const allPages = [
 		path: '/boards/personal',
 		exact: false,
 	},
+	{
+		view: TeamsPage,
+		path: '/boards/teams',
+		exact: true,
+	},
 ]
 
 const App = () => {
@@ -89,6 +95,7 @@ const App = () => {
 	const [snackClickawayCount, setSnackClickawayCount] = useState(0)
 	const [loggedIn, setLoggedIn] = useState(false)
 	const [loading, setLoading] = useState(false)
+	const [team, setTeam] = useState('')
 
 	const validateToken = async () => {
 		const credentials = read_cookie('loginCredentials')
@@ -144,6 +151,8 @@ const App = () => {
 						return (
 							<Route key={key} path={Page.path} exact={Page.exact}>
 								<Page.view
+									team={team}
+									setTeam={setTeam}
 									loggedIn={loggedIn}
 									setLoggedIn={setLoggedIn}
 									newSnack={snackFunc.newSnack}
