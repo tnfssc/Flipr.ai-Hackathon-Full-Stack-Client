@@ -109,7 +109,7 @@ const PersonalBoard = props => {
 					<Backdrop style={{ color: 'black', zIndex: 2000 }} open={loading}>
 						<CircularProgress style={{ color: 'white' }} />
 					</Backdrop>
-					<Backdrop style={{ color: 'black', zIndex: 2000 }} open={deletingBoard !== -1}>
+					<Backdrop style={{ color: 'black', zIndex: 1900 }} open={deletingBoard !== -1}>
 						<Toolbar>
 							<ButtonGroup>
 								<Button
@@ -125,7 +125,7 @@ const PersonalBoard = props => {
 							</ButtonGroup>
 						</Toolbar>
 					</Backdrop>
-					<Backdrop style={{ color: 'black', zIndex: 2000 }} open={addingNewBoard}>
+					<Backdrop style={{ color: 'black', zIndex: 1900 }} open={addingNewBoard}>
 						<Container component={Paper} style={{ width: '85%' }}>
 							<Toolbar>
 								<Typography style={{ flexGrow: 1 }} variant="h6">
